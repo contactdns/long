@@ -1,1 +1,20 @@
 # gitignore for LaTeX.
+*.tmp
+*~
+*.aux
+*x.gz
+*.log
+*.toc
+*.out
+*.run.xml
+*_latexmk
+*.blg
+*.lo*
+*.fls
+*.bbl
+*.scf
+dissert*pdf
+*.vrb
+*.nav
+*.snm
+

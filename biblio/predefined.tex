@@ -1,0 +1,83 @@
+%%% Реализация библиографии встроенными средствами посредством движка bibtex8 %%%
+
+%%% Пакеты %%%
+\usepackage{cite}                                   % Красивые ссылки на литературу
+
+
+%bibtex8.exe "%tm" --huge --csfile "cp1251rus.csf
+%bibtex8.exe "%tm" --huge --csfile "utf8cyrillic.csf
+
+%%% Стили %%%
+%\bibliographystyle{../BibTeX-Styles/utf8gost71u}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/utf8gost71s}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/gost2003smed}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/ugost2003s}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+\bibliographystyle{../BibTeX-Styles/ugost2003}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/ugost2003s_}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/gost2003med_utf}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+%\bibliographystyle{../BibTeX-Styles/ugost2008s}    % Оформляем библиографию по ГОСТ 7.1 (ГОСТ Р 7.0.11-2011, 5.6.7)
+
+\makeatletter
+%\renewcommand{\@biblabel}[1]{#1.}   % Заменяем библиографию с квадратных скобок на точку
+\makeatother
+%% Управление отступами между записями
+%% требует etoolbox 
+%% http://tex.stackexchange.com/a/105642
+%\patchcmd\thebibliography
+% {\labelsep}
+% {\labelsep\itemsep=5pt\parsep=0pt\relax}
+% {}
+% {\typeout{Couldn't patch the command}}
+
+%%% Цитирование %%%
+\renewcommand\citepunct{;\penalty\citepunctpenalty%
+    \hskip.13emplus.1emminus.1em\relax}                % Разделение ; при перечислении ссылок (ГОСТ Р 7.0.5-2008)
+%
+
+%%% Создание команд для вывода списка литературы %%%
+\newcommand{\biblioildar}{../biblio/bases/biblio_long}
+%\newcommand{\biblioildar}{../biblio/bases/biblio_ildar_only}
+%\newcommand{\bibliosidorovdn}{../biblio/bases/biblio_sidorovdn}
+%\newcommand{\bibliosidorovdn}{../biblio/bases/for_synopsis/biblio_ildar_vak}
+%\newcommand{\biblioildar}{../biblio/bases/for_synopsis/biblio_ildar_non_vak}
+%\newcommand{\biblioildar}{../biblio/bases/biblio_ildar_only_cp1251}
+%\newcommand{\bibliosidorovdn}{../biblio/bases/biblio_sidorovdn_cp1251}
+
+\newcommand*{\insertbibliofull}{
+%\bibliography{../biblio/bases/othercites,../biblio/bases/authorpapersVAK,../biblio/bases/authorpapers,../biblio/bases/authorconferences}         % Подключаем BibTeX-базы % После запятых не должно быть лишних пробелов — он "думает", что это тоже имя пути
+%\bibliography{\biblioildar,\bibliosidorovdn}
+%\bibliography{../biblio/bases/biblio_ildar_only,../biblio/bases/biblio_sidorovdn}
+\bibliography{../biblio/bases/biblio_long}
+%\bibliography{../biblio/bases/for_synopsis/biblio_ildar_vak,../biblio/bases/for_synopsis/biblio_ildar_non_vak}
+}
+
+%\newcommand*{\insertbiblioauthor}{
+%%\bibliography{../biblio/bases/authorpapersVAK,../biblio/bases/authorpapers,../biblio/bases/authorconferences}         % Подключаем BibTeX-базы % После запятых не должно быть лишних пробелов — он "думает", что это тоже имя пути
+%\bibliography{\biblioildar}
+%%\bibliography{../biblio/bases/biblio_ildar_only}
+%}
+%
+%\newcommand*{\insertbiblioother}{
+%%\bibliography{../biblio/bases/othercites}         % Подключаем BibTeX-базы
+%\bibliography{\bibliosidorovdn}
+%%\bibliography{../biblio/bases/biblio_sidorovdn}
+%}
+
+\newcommand*{\insertbibliovak}{
+%\bibliography{../biblio/bases/othercites,../biblio/bases/authorpapersVAK,../biblio/bases/authorpapers,../biblio/bases/authorconferences}         % Подключаем BibTeX-базы % После запятых не должно быть лишних пробелов — он "думает", что это тоже имя пути
+%\bibliography{\biblioildar,\bibliosidorovdn}
+\bibliography{../biblio/bases/for_synopsis/biblio_ildar_vak}
+}
+
+\newcommand*{\insertbibliononvak}{
+%\bibliography{../biblio/bases/othercites,../biblio/bases/authorpapersVAK,../biblio/bases/authorpapers,../biblio/bases/authorconferences}         % Подключаем BibTeX-базы % После запятых не должно быть лишних пробелов — он "думает", что это тоже имя пути
+%\bibliography{\biblioildar,\bibliosidorovdn}
+\bibliography{../biblio/bases/for_synopsis/biblio_ildar_non_vak}
+}
+
+%% Счётчик использованных ссылок на литературу, обрабатывающий с учётом неоднократных ссылок
+%% Требуется дважды компилировать, поскольку ему нужно считать актуальный внешний файл со списком литературы
+\newtotcounter{citenum}
+\def\oldcite{}
+\let\oldcite=\bibcite
+\def\bibcite{\stepcounter{citenum}\oldcite}

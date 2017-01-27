@@ -1,0 +1,23 @@
+%%% Управление компиляцией отдельных частей диссертации %%%
+% Необходимо сначала иметь полностью скомпилированный документ, чтобы все
+% промежуточные файлы были в наличии
+% Затем, для вывода отдельных частей можно воспользоваться командой \includeonly
+% Ниже примеры использования команды:
+%
+%\includeonly{part2}
+%\includeonly{contents,appendix,conclusion}
+%
+% Если все команды закомментированы, то документ будет выведен в PDF файл полностью
+
+%\includeonly{other_parts/title_phd,other_parts/contents}
+%\includeonly{other_parts/title_phd}           % Титульный лист
+%\includeonly{other_parts/contents}        % Оглавление
+%\includeonly{part0_introduction/introduction}    % Введение
+%\includeonly{part1/part1}           % Глава 1
+%\includeonly{part2/part2}           % Глава 2
+%\includeonly{part3/part3}           % Глава 3
+%\includeonly{part4_conclusion/conclusion}      % Заключение
+%\includeonly{other_parts/title_phd,other_parts/contents,part5_references/references_phd}      % Список литературы
+%\includeonly{other_parts/lists}           % Списки таблиц и изображений (иллюстративный материал)
+%\includeonly{part1_intro/review}           % Глава 1
+%\includeonly{part1/part1_5}           % Глава 1
