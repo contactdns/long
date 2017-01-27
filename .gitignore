@@ -18,3 +18,7 @@ dissert*pdf
 *.nav
 *.snm
 *.bak
+/Dissertation/auto/dispackages.el
+*/auto
+*/*/auto
+*.upa

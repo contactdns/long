@@ -1,7 +1,7 @@
 %%% Реализация библиографии встроенными средствами посредством движка bibtex8 %%%
 
 %%% Пакеты %%%
-\usepackage{cite}                                   % Красивые ссылки на литературу
+\usepackage[compress]{cite}                                   % Красивые ссылки на литературу
 
 
 %bibtex8.exe "%tm" --huge --csfile "cp1251rus.csf
@@ -21,7 +21,7 @@
 %\renewcommand{\@biblabel}[1]{#1.}   % Заменяем библиографию с квадратных скобок на точку
 \makeatother
 %% Управление отступами между записями
-%% требует etoolbox 
+%% требует etoolbox
 %% http://tex.stackexchange.com/a/105642
 %\patchcmd\thebibliography
 % {\labelsep}
@@ -81,3 +81,8 @@
 \def\oldcite{}
 \let\oldcite=\bibcite
 \def\bibcite{\stepcounter{citenum}\oldcite}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Dissertation/dissertation"
+%%% End:
