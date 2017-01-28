@@ -18,13 +18,19 @@
 
 
 \usepackage{xcolor}
-\usepackage[version=1,draft]{pdfcomment}% FIXME: Remove draft before final layout!!!
+\usepackage[version=1,draft]{pdfcomment}% FIXME: Remove draft before making the final layout!!!
 \definecolor{myblue}{rgb}{0.045,0.278,0.643}
 \colorlet{myorange}{red!30!yellow}
 \defineavatar{EA}{color=myorange,author={Evgeny Cherkashin},opacity=0.7}%
 \defineavatar{DN}{color=myblue,author={Dennis Sidorov},opacity=0.7}%
 \newcommand{\cEA}[1]{\pdfcomment[avatar=EA]{#1}}
 \newcommand{\cDN}[1]{\pdfcomment[avatar=DN]{#1}}
+
+\usepackage[draft,obeyDraft]{todonotes}% Another comment engine
+\newcommand{\mrk}[1]{\todo[inline,color=green,size=\footnotesize]{#1}{}}
+% \todo[inline]{This is a todo note inline}
+% \todo{This is a to do note at margin}
+% listoftodos
 
 % These are examples of annotation icons
 %\pdfcomment[subject={Top2},author={Daisy Duck},color={0.234 0.867 0.211},voffset=8pt,opacity=0.5]{This is a comment.}  %\pdfcomment[id=1,color=myblue,subject={Comment2},icon=Note,open=true,hspace=100pt]{This is another comment.}
