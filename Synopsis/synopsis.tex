@@ -10,56 +10,15 @@
 \input{config/synstyles}           % Стили для автореферата
 \input{config/userstyles}          % Стили для специфических пользовательских задач
 \input{../biblio/bibliopreamble}% Настройки библиографии из внешнего файла (там же выбор: встроенная или на основе biblatex)
-
-
+\usepackage[multiple]{footmisc}
+\usepackage[]{algorithm2e}
+\SetKwInput{KwData}{Исходные данные}
+\SetKwInput{KwResult}{Результат}
+\SetAlgorithmName{Алгоритм}{алгоритм}{список алгоритм}
 \begin{document}
 
 \input{config/title}           % Титульный лист
 
-\subsection*{ОБЩАЯ ХАРАКТЕРИСТИКА РАБОТЫ}
-\input{../common/referat} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
-%Диссертационная работа была выполнена при поддержке грантов ...
-\\
-
 \input{text/content}         % Содержание автореферата
-
-\renewcommand{\refname}{Издания, входящие в Перечень ВАК РФ, индексируемых Web of Science:}
-\input{long_vak.bbl}
-
-\let\oldthebibliography=\thebibliography
-\let\oldendthebibliography=\endthebibliography
-\renewenvironment{thebibliography}[1]{%
-    \oldthebibliography{#1}%
-    \setcounter{enumiv}{3}%
-}{\oldendthebibliography}
-
-\renewcommand{\refname}{\large Издания, включенные в РИНЦ }
-\input{long_non_vak.bbl}
-
-\renewenvironment{thebibliography}[1]{%
-    \oldthebibliography{#1}%
-    \setcounter{enumiv}{4}%
-}{\oldendthebibliography}
-
-\renewcommand{\refname}{\large Свидетельство о регистрации программы для ЭВМ}
-\input{long_cvitel.bbl}
-
-\renewenvironment{thebibliography}[1]{%
-    \oldthebibliography{#1}%
-    \setcounter{enumiv}{6}%
-}{\oldendthebibliography}
-
-
-\renewcommand{\refname}{\large Прочне издания}
-\input{long_journal.bbl}
-
-\renewenvironment{thebibliography}[1]{%
-    \oldthebibliography{#1}%
-    \setcounter{enumiv}{16}%
-}{\oldendthebibliography}
-
-
-%\renewcommand{\refname}{\large Публикации автора по теме диссертации}
-%\insertbibliovak
 
 \end{document}
