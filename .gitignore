@@ -22,3 +22,7 @@ dissert*pdf
 */auto
 */*/auto
 *.upa
+*-converted-to.pdf
+*.bbl.tex
+*.dvi
+/tmp/Avtoreferat.rar
