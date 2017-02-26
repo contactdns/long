@@ -12,28 +12,29 @@
 \fi
 
 %%% Поля и разметка страницы %%%
-\usepackage{pdflscape}                              % Для включения альбомных страниц
+%\usepackage{pdflscape}                              % Для включения альбомных страниц
 \usepackage{geometry}                               % Для последующего задания полей
 
 %%% Математические пакеты %%%
 \usepackage{amsthm,amsfonts,amsmath,amssymb,amscd}  % Математические дополнения от AMS
-\usepackage{mathtools}                              % Добавляет окружение multlined
+%\usepackage{mathtools}                              % Добавляет окружение multlined
 
 %%%% Установки для размера шрифта 14 pt %%%%
 %% Формирование переменных и констант для сравнения (один раз для всех подключаемых файлов)%%
 %% должно располагаться до вызова пакета fontspec или polyglossia, потому что они сбивают его работу
-\newlength{\curtextsize}
-\newlength{\bigtextsize}
-\setlength{\bigtextsize}{13.9pt}
+%\newlength{\curtextsize}
+%\newlength{\bigtextsize}
+%\setlength{\bigtextsize}{13.9pt}
 
 \makeatletter
-%\show\f@size                                       % неплохо для отслеживания, но вызывает стопорение процесса, если документ компилируется без команды  -interaction=nonstopmode 
-\setlength{\curtextsize}{\f@size pt}
+%\show\f@size                                       % неплохо для отслеживания, но вызывает стопорение процесса, если документ компилируется без команды  -interaction=nonstopmode
+%\setlength{\curtextsize}{\f@size pt}
 \makeatother
 
 %%% Кодировки и шрифты %%%
 \ifxetexorluatex
     \usepackage{polyglossia}                        % Поддержка многоязычности (fontspec подгружается автоматически)
+    %\usepackage[english,russian]{babel}
 \else
     \RequirePDFTeX                                  % tests for PDFTEX use and throws an error if a different engine is being used
     \usepackage{cmap}                               % Улучшенный поиск русских слов в полученном pdf-файле
@@ -81,4 +82,3 @@
 \usepackage[figure,table]{totalcount}               % Счётчик рисунков и таблиц
 \usepackage{totcount}                               % Пакет создания счётчиков на основе последнего номера подсчитываемого элемента (может требовать дважды компилировать документ)
 \usepackage{totpages}                               % Счётчик страниц, совместимый с hyperref (ссылается на номер последней страницы). Желательно ставить последним пакетом в преамбуле
-
